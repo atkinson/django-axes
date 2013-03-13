@@ -27,6 +27,12 @@ from axes.models import AccessAttempt, AccessLog
 from axes.signals import user_locked_out
 import axes
 
+try:
+    from django.contrib.auth import get_user_model()
+    User = get_user_model()
+except:
+    from django.contrib.auth.models import User
+
 # see if the user has overridden the failure limit
 FAILURE_LIMIT = getattr(settings, 'AXES_LOGIN_FAILURE_LIMIT', 3)
 
