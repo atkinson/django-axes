@@ -27,8 +27,9 @@ from axes.models import AccessAttempt, AccessLog
 from axes.signals import user_locked_out
 import axes
 
+# Support django >= 1.5 custom user models
 try:
-    from django.contrib.auth import get_user_model()
+    from django.contrib.auth import get_user_model
     User = get_user_model()
 except:
     from django.contrib.auth.models import User
